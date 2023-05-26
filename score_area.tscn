@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cth2mnw6x1uyi"]
+
+[ext_resource type="Script" path="res://score_area.gd" id="1_jsgb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkmuk"]
+size = Vector2(50, 500)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vaaro"]
+size = Vector2(50, 500)
+
+[node name="score_area" type="Area2D"]
+script = ExtResource("1_jsgb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_hkmuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+z_index = -39
+scale = Vector2(0.5, 0.5)
+texture = SubResource("PlaceholderTexture2D_vaaro")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

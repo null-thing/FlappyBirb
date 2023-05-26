@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://dr1sxx8r0cifu"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_lavtu"]
+[ext_resource type="PackedScene" uid="uid://bem5u5cjqy35u" path="res://player.tscn" id="1_u3xoc"]
+[ext_resource type="PackedScene" uid="uid://c2w1picn1vql6" path="res://obstacle.tscn" id="2_y60wf"]
+[ext_resource type="Script" path="res://start_point.gd" id="3_gv0yx"]
+[ext_resource type="Script" path="res://obstacle_timer.gd" id="3_r2flc"]
+[ext_resource type="Script" path="res://Cam_control.gd" id="4_7jlj2"]
+[ext_resource type="Script" path="res://cloud_timer.gd" id="4_t0mxg"]
+[ext_resource type="Texture2D" uid="uid://bafxg7k65hxd4" path="res://sprite/background/39.png" id="5_yj1gx"]
+[ext_resource type="PackedScene" uid="uid://cth2mnw6x1uyi" path="res://score_area.tscn" id="7_11gk6"]
+[ext_resource type="PackedScene" uid="uid://dvs6vx51her7q" path="res://cloud.tscn" id="7_krc5g"]
+[ext_resource type="Script" path="res://Background.gd" id="9_7jlb8"]
+[ext_resource type="PackedScene" uid="uid://go5lsvb8rh4w" path="res://hud.tscn" id="11_5pkou"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_lavtu")
+
+[node name="player" parent="." instance=ExtResource("1_u3xoc")]
+position = Vector2(230, 300)
+
+[node name="start_point" type="Marker2D" parent="."]
+position = Vector2(230, 300)
+script = ExtResource("3_gv0yx")
+
+[node name="obstacle_timer" type="Timer" parent="."]
+wait_time = 2.0
+script = ExtResource("3_r2flc")
+
+[node name="cloud_timer" type="Timer" parent="."]
+wait_time = 0.128
+script = ExtResource("4_t0mxg")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="obstacle" parent="." instance=ExtResource("2_y60wf")]
+position = Vector2(-1000, 0)
+scale = Vector2(1, 1)
+
+[node name="score_area" parent="." instance=ExtResource("7_11gk6")]
+position = Vector2(-1000, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(557, 323)
+script = ExtResource("4_7jlj2")
+
+[node name="Background" type="ParallaxBackground" parent="."]
+script = ExtResource("9_7jlb8")
+
+[node name="39" type="Sprite2D" parent="Background"]
+show_behind_parent = true
+position = Vector2(558, 322)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_yj1gx")
+
+[node name="cloud" parent="Background" instance=ExtResource("7_krc5g")]
+show_behind_parent = true
+
+[node name="cloud2" parent="Background" instance=ExtResource("7_krc5g")]
+show_behind_parent = true
+position = Vector2(-369, 59)
+
+[node name="HUD" parent="." instance=ExtResource("11_5pkou")]
+
+[connection signal="hit" from="player" to="." method="_on_player_hit"]
+[connection signal="timeout" from="obstacle_timer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="cloud_timer" to="." method="_on_cloud_timer_timeout"]
+[connection signal="body_entered" from="obstacle" to="player" method="_on_obstacle_body_entered"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

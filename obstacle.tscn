@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2w1picn1vql6"]
+
+[ext_resource type="Script" path="res://obstacle.gd" id="1_6oqoo"]
+[ext_resource type="Texture2D" uid="uid://b4ih64bqah1fi" path="res://sprite/obstacle/40.png" id="1_ldxr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_parwb"]
+size = Vector2(100, 640)
+
+[node name="obstacle" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_6oqoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 7)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_ldxr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 43)
+shape = SubResource("RectangleShape2D_parwb")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(2.6, 9.65)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

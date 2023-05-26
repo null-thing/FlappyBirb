@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://go5lsvb8rh4w"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_j8y3r"]
+[ext_resource type="FontFile" uid="uid://dlbvlvn6eab3f" path="res://font/NanumEXTRABOLD.TTF" id="2_chwiu"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_j8y3r")
+
+[node name="score_label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.5
+offset_right = 51.5
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_chwiu")
+text = "SCORE_TEMP
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="speed_label" type="Label" parent="."]
+offset_right = 85.0
+offset_bottom = 26.0
+size_flags_horizontal = 0
+text = "SPEEEEEED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -39.0
+offset_right = 71.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_chwiu")
+theme_override_font_sizes/font_size = 30
+text = "Left Click to flap
+
+Right Click to glide"
+horizontal_alignment = 1
+
+[node name="Start_button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.5
+offset_top = -148.0
+offset_right = 92.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_chwiu")
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="Start_inf_button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="help_button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="help_close" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Start_button" to="." method="_on_start_button_pressed"]
