@@ -73,11 +73,7 @@ offset_right = 183.0
 offset_bottom = 89.0
 text = "infinite mode"
 
-[node name="help_button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="help_close" type="Button" parent="."]
+[node name="return_menu_button" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 

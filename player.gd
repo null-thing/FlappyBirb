@@ -8,6 +8,7 @@ var rotate_zeroupper = 0
 var input_enabled = 0
 var stop = 0
 signal hit
+signal end
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")*1.5
@@ -83,3 +84,6 @@ func hit_the_floor():
 
 func hit_func():
 	hit.emit()
+	
+func end_func():
+	end.emit()

@@ -1,18 +1,25 @@
 extends CanvasLayer
 signal start_game
 signal infinite_mode
-var spd
+var spd = 0
+var highest_spd = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$speed_label.hide()
 	$score_label.hide()
+	highest_spd = spd
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if 0 :
+		$speed_label.text = "Highest speed : "+str(highest_spd)
+		$score_label.text = str($"..".score)
+		return
 	spd = $"../player".velocity.x/100
 	if spd > 1 :
 		spd = int(spd)
+	highest_spd = max(spd, highest_spd)
 	$speed_label.text = "Current speed : "+str(spd)
 	$score_label.text = str($"..".score)
 	
@@ -37,6 +44,7 @@ func show_game_over():
 	show_message("Game over")
 	$Start_button.text = "restart?"
 	$Start_button.show()
+	$Start_inf_button.show()
 
 func _on_start_button_pressed():
 	$Start_button.hide()

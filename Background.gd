@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	col = bg_sprite.get_modulate()
-	print(col)
+	#print(col)
 	"if is_dawn:
 		background_gradation(is_night, 0, 0)"
 	
