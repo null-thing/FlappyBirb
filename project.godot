@@ -20,6 +20,7 @@ config/windows_native_icon="res://icons/Birb.ico"
 
 [display]
 
+window/size/resizable=false
 window/stretch/aspect="expand"
 
 [editor]

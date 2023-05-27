@@ -15,9 +15,73 @@ position = Vector2(0, -500)
 scale = Vector2(0.959259, 1.02222)
 texture = ExtResource("2_x4wf6")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+z_index = -39
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+show_behind_parent = true
+z_index = -39
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D2"]
+show_behind_parent = true
+z_index = -39
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D2/Sprite2D"]
+show_behind_parent = true
+z_index = -39
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D2/Sprite2D/Sprite2D2"]
+show_behind_parent = true
+z_index = -39
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Sprite2D/Sprite2D2/Sprite2D/Sprite2D2/Sprite2D"]
+show_behind_parent = true
+z_index = -39
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 0)
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, 500)
 texture = ExtResource("2_x4wf6")
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+show_behind_parent = true
+position = Vector2(0, -500)
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 500)
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2/Sprite2D"]
+show_behind_parent = true
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 500)
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2/Sprite2D/Sprite2D"]
+show_behind_parent = true
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 500)
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2/Sprite2D/Sprite2D/Sprite2D"]
+show_behind_parent = true
+position = Vector2(300, 0)
+texture = ExtResource("2_x4wf6")
+offset = Vector2(300, 500)
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

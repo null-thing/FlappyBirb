@@ -43,6 +43,8 @@ offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_chwiu")
 theme_override_font_sizes/font_size = 30
 text = "Left Click to flap
@@ -67,17 +69,53 @@ theme_override_font_sizes/font_size = 30
 text = "START"
 
 [node name="Start_inf_button" type="CheckButton" parent="."]
-offset_left = 84.0
-offset_top = 56.0
-offset_right = 183.0
-offset_bottom = 89.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -31.0
+offset_right = 76.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "infinite mode"
 
 [node name="return_menu_button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -53.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+text = "Menu"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="title" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.263
+anchor_right = 0.5
+anchor_bottom = 0.263
+offset_left = -43.0
+offset_top = -11.424
+offset_right = 44.0
+offset_bottom = 14.576
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.831373, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 11
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_chwiu")
+theme_override_font_sizes/font_size = 50
+text = "Flappy Birb"
+
 [connection signal="pressed" from="Start_button" to="." method="_on_start_button_pressed"]
 [connection signal="toggled" from="Start_inf_button" to="." method="_on_start_inf_button_toggled"]
+[connection signal="pressed" from="return_menu_button" to="." method="_on_return_menu_button_pressed"]

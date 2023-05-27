@@ -4,6 +4,7 @@ var sun_timer
 var col
 var is_dawn = 0
 var is_night = 0
+const TWEEN_TIME = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,32 +12,32 @@ func _ready():
 	sun_timer = get_node("../sun_timer")
 	sun_timer.start()
 	
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	col = bg_sprite.get_modulate()
-	#print(col)
-	"if is_dawn:
-		background_gradation(is_night, 0, 0)"
+	pass
 	
-func background_gradation(is_night, col, delta):
+func background_gradation(is_night, col):
+	var tween =get_tree().create_tween()
 	if is_night:
-		if Color(col)==Color(0.8, 0.7, 0.7, 1):
-			bg_sprite.set_modulate(Color(col).blend(Color(1,1,1,1)))
-		else :
-			bg_sprite.set_modulate(Color(col).blend(Color(0.8314,0.7333,0.7569,0.001)))
-		
+		tween.tween_property($"./39", "modulate", Color(0.4914, 0.3655, 0.3999, 1), TWEEN_TIME/2)
+		await get_tree().create_timer(TWEEN_TIME/2).timeout
+		tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property($"./39", "modulate", Color(0,0,0.1,1), TWEEN_TIME/2)
 	else: 
-		bg_sprite.set_modulate(col.blend(Color(0,0,0,0.001)))
-	
-	
-	if Color(col) == Color(1,1,1,1):
-		is_dawn = 0
+		tween.tween_property($"./39", "modulate", Color(0.4914, 0.3655, 0.3999, 1), TWEEN_TIME/2)
+		await get_tree().create_timer(TWEEN_TIME/2).timeout
+		tween.kill()
+		tween = get_tree().create_tween()
+		tween.tween_property($"./39", "modulate", Color(1,1,1,1), TWEEN_TIME/2)
+	await get_tree().create_timer(TWEEN_TIME/2).timeout
+	tween.kill()
+	sun_timer.start()
 		
 func _on_sun_timer_timeout():
-	sun_timer.stop()
-	is_dawn = 1
 	if is_night:
 		is_night = 0
 	else:
 		is_night = 1
+	sun_timer.stop()
+	background_gradation(is_night, col)

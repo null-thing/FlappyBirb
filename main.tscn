@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dr1sxx8r0cifu"]
+[gd_scene load_steps=16 format=3 uid="uid://dr1sxx8r0cifu"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_lavtu"]
 [ext_resource type="PackedScene" uid="uid://bem5u5cjqy35u" path="res://player.tscn" id="1_u3xoc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://go5lsvb8rh4w" path="res://hud.tscn" id="11_5pkou"]
 [ext_resource type="PackedScene" uid="uid://clrj0mtt7rpjl" path="res://obstacle_end.tscn" id="13_4gfqy"]
 [ext_resource type="PackedScene" uid="uid://tfyl0txd0srm" path="res://obstacle_rock.tscn" id="14_eqjgt"]
+[ext_resource type="PackedScene" uid="uid://c1auk725xawe8" path="res://celing.tscn" id="15_kqdux"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_lavtu")
@@ -34,6 +35,7 @@ wait_time = 0.128
 script = ExtResource("4_t0mxg")
 
 [node name="sun_timer" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -53,7 +55,6 @@ script = ExtResource("4_7jlj2")
 script = ExtResource("9_7jlb8")
 
 [node name="39" type="Sprite2D" parent="Background"]
-modulate = Color(0.796078, 0.682353, 0.709804, 1)
 show_behind_parent = true
 position = Vector2(558, 322)
 scale = Vector2(0.7, 0.7)
@@ -69,12 +70,15 @@ position = Vector2(-369, 59)
 [node name="HUD" parent="." instance=ExtResource("11_5pkou")]
 
 [node name="obstacle_ending" parent="." instance=ExtResource("13_4gfqy")]
-position = Vector2(-1516, 193)
+position = Vector2(-2115, 222)
 scale = Vector2(1, 1)
 
 [node name="obstacle_rock" parent="." instance=ExtResource("14_eqjgt")]
 position = Vector2(-786, 5)
 scale = Vector2(1, 1)
+
+[node name="celing" parent="." instance=ExtResource("15_kqdux")]
+position = Vector2(0, -12)
 
 [connection signal="end" from="player" to="." method="_on_player_end"]
 [connection signal="hit" from="player" to="." method="_on_player_hit"]

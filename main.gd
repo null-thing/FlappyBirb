@@ -14,7 +14,8 @@ var ob_type = 0
 var num_ob_type = 2
 var is_inf = 0
 var end_spawned = 0
-const END_NUM = 98
+const END_NUM = 99
+const SCORE_NEXT = 10
 
 var ani
 var score = 0
@@ -27,7 +28,6 @@ func _ready():
 	cloud_timer = get_node("cloud_timer")
 	background = get_node("Background")
 	
-	print(ob_type)
 	cloud_spawn()
 	obstacle_spawn(ob_type)
 	obstacle_timer.start()
@@ -35,6 +35,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$celing.position.x = $player.position.x
 	pass
 
 func obstacle_spawn(ob_num):
@@ -93,11 +94,13 @@ func cloud_spawn():
 func game_over():
 	$obstacle_timer.stop()
 	$cloud_timer.stop()
-	$HUD.show_game_over()
+	$HUD.show_game_over()	
 	$player/AnimatedSprite2D.play("die")
 	$player.input_enabled=0
-
+	$HUD.end = 1
+	
 func new_game():
+	$HUD.end = 0
 	end_spawned = 0
 	ob_type = 0
 	$player/AnimatedSprite2D.play("player")
@@ -138,7 +141,7 @@ func score_increase():
 	score+=1
 	if score==END_NUM and is_inf==0: # end score : score_end +1
 		ob_type = 9
-	if score%20 == 0:
+	if score%SCORE_NEXT == 0:
 		ob_type = (ob_type+1)%num_ob_type
 		
 
@@ -149,6 +152,7 @@ func _on_player_end():
 	$HUD.show_message("Game over\n\nHuman cannot see glass,\nonly perceives its presence within frame")
 	$player/AnimatedSprite2D.play("die")
 	$player.input_enabled=0
+	$HUD.end = 1
 
 
 func _on_hud_infinite_mode():
