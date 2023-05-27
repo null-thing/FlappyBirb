@@ -54,6 +54,8 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("glide"):
 		velocity.x-=delta*100
 		$AnimatedSprite2D.play("player_glide")
+		if velocity.x < SPEED:
+			velocity.x = SPEED
 	else:
 		$AnimatedSprite2D.play("player")
 		

@@ -1,5 +1,6 @@
 extends CanvasLayer
 signal start_game
+signal infinite_mode
 var spd
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,7 @@ func _process(delta):
 		spd = int(spd)
 	$speed_label.text = "Current speed : "+str(spd)
 	$score_label.text = str($"..".score)
-
+	
 func countdown():
 	for i in range(3):
 		show_message(str(3-i))
@@ -39,5 +40,10 @@ func show_game_over():
 
 func _on_start_button_pressed():
 	$Start_button.hide()
+	$Start_inf_button.hide()
 	$Message.hide()
 	start_game.emit()
+
+
+func _on_start_inf_button_toggled(button_pressed):
+	infinite_mode.emit()

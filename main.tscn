@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr1sxx8r0cifu"]
+[gd_scene load_steps=15 format=3 uid="uid://dr1sxx8r0cifu"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_lavtu"]
 [ext_resource type="PackedScene" uid="uid://bem5u5cjqy35u" path="res://player.tscn" id="1_u3xoc"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dvs6vx51her7q" path="res://cloud.tscn" id="7_krc5g"]
 [ext_resource type="Script" path="res://Background.gd" id="9_7jlb8"]
 [ext_resource type="PackedScene" uid="uid://go5lsvb8rh4w" path="res://hud.tscn" id="11_5pkou"]
+[ext_resource type="PackedScene" uid="uid://clrj0mtt7rpjl" path="res://obstacle_end.tscn" id="13_4gfqy"]
+[ext_resource type="PackedScene" uid="uid://tfyl0txd0srm" path="res://obstacle_rock.tscn" id="14_eqjgt"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_lavtu")
@@ -24,12 +26,14 @@ position = Vector2(230, 300)
 script = ExtResource("3_gv0yx")
 
 [node name="obstacle_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 script = ExtResource("3_r2flc")
 
 [node name="cloud_timer" type="Timer" parent="."]
 wait_time = 0.128
 script = ExtResource("4_t0mxg")
+
+[node name="sun_timer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -39,7 +43,7 @@ position = Vector2(-1000, 0)
 scale = Vector2(1, 1)
 
 [node name="score_area" parent="." instance=ExtResource("7_11gk6")]
-position = Vector2(-1000, 0)
+position = Vector2(-1004, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(557, 323)
@@ -49,6 +53,7 @@ script = ExtResource("4_7jlj2")
 script = ExtResource("9_7jlb8")
 
 [node name="39" type="Sprite2D" parent="Background"]
+modulate = Color(0.796078, 0.682353, 0.709804, 1)
 show_behind_parent = true
 position = Vector2(558, 322)
 scale = Vector2(0.7, 0.7)
@@ -63,8 +68,17 @@ position = Vector2(-369, 59)
 
 [node name="HUD" parent="." instance=ExtResource("11_5pkou")]
 
+[node name="obstacle_ending" parent="." instance=ExtResource("13_4gfqy")]
+position = Vector2(-1516, 193)
+scale = Vector2(1, 1)
+
+[node name="obstacle_rock" parent="." instance=ExtResource("14_eqjgt")]
+position = Vector2(-786, 5)
+scale = Vector2(1, 1)
+
 [connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="obstacle_timer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="timeout" from="cloud_timer" to="." method="_on_cloud_timer_timeout"]
+[connection signal="timeout" from="sun_timer" to="Background" method="_on_sun_timer_timeout"]
 [connection signal="body_entered" from="obstacle" to="player" method="_on_obstacle_body_entered"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

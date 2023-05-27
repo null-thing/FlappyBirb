@@ -13,7 +13,6 @@ func _process(delta):
 func _on_body_entered(body):
 	body.velocity.x = 0
 	body.get_node("CollisionShape2D").set_deferred("disabled", true)
-	body.get_node("AnimatedSprite2D").play("die")
 	body.hit_func()
 
 

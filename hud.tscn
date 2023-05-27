@@ -15,6 +15,7 @@ offset_right = 51.5
 offset_bottom = 22.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_chwiu")
+theme_override_font_sizes/font_size = 40
 text = "SCORE_TEMP
 "
 horizontal_alignment = 1
@@ -24,6 +25,7 @@ vertical_alignment = 1
 offset_right = 85.0
 offset_bottom = 26.0
 size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
 text = "SPEEEEEED"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,9 +66,12 @@ theme_override_fonts/font = ExtResource("2_chwiu")
 theme_override_font_sizes/font_size = 30
 text = "START"
 
-[node name="Start_inf_button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Start_inf_button" type="CheckButton" parent="."]
+offset_left = 84.0
+offset_top = 56.0
+offset_right = 183.0
+offset_bottom = 89.0
+text = "infinite mode"
 
 [node name="help_button" type="Button" parent="."]
 offset_right = 8.0
@@ -79,3 +84,4 @@ offset_bottom = 8.0
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Start_button" to="." method="_on_start_button_pressed"]
+[connection signal="toggled" from="Start_inf_button" to="." method="_on_start_inf_button_toggled"]

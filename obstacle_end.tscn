@@ -1,25 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2w1picn1vql6"]
+[gd_scene load_steps=4 format=3 uid="uid://clrj0mtt7rpjl"]
 
-[ext_resource type="Script" path="res://obstacle.gd" id="1_6oqoo"]
-[ext_resource type="Texture2D" uid="uid://31ecsuojlstu" path="res://sprite/obstacle/tree.png" id="2_4cdb7"]
+[ext_resource type="Script" path="res://obstacle.gd" id="1_e53rw"]
+[ext_resource type="Texture2D" uid="uid://fj88xx8x0osd" path="res://sprite/obstacle/42.png" id="2_x4wf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_parwb"]
-size = Vector2(100, 1230)
+size = Vector2(667.5, 1702)
 
 [node name="obstacle" type="Area2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_6oqoo")
+script = ExtResource("1_e53rw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 7)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_4cdb7")
+position = Vector2(0, -500)
+scale = Vector2(0.959259, 1.02222)
+texture = ExtResource("2_x4wf6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 500)
+texture = ExtResource("2_x4wf6")
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.25, -1)
 shape = SubResource("RectangleShape2D_parwb")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(1194, -2)
 scale = Vector2(2.6, 9.65)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

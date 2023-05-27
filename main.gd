@@ -42,9 +42,9 @@ func obstacle_spawn():
 	score_instance.add_to_group("obstacles")
 	obstacle_instance_u.rotation = PI
 	obstacle_instance_u.position.x = $player.position.x + 1000
-	obstacle_instance_u.position.y = randf_range(-100, get_viewport_rect().size.y-450)	
+	obstacle_instance_u.position.y = randf_range(-300, get_viewport_rect().size.y-550)	
 	obstacle_instance.position.x = $player.position.x + 1000
-	obstacle_instance.position.y = obstacle_instance_u.position.y + randf_range(400,500)
+	obstacle_instance.position.y = obstacle_instance_u.position.y + randf_range(800,850)
 	score_instance.position.x = $player.position.x + 1000
 	score_instance.position.y = (obstacle_instance.position.y + obstacle_instance_u.position.y)/2
 
@@ -64,6 +64,7 @@ func game_over():
 	$obstacle_timer.stop()
 	$cloud_timer.stop()
 	$HUD.show_game_over()
+	$player/AnimatedSprite2D.play("die")
 	$player.input_enabled=0
 
 func new_game():
@@ -103,3 +104,4 @@ func _on_hud_start_game():
 
 func score_increase():
 	score+=1
+

@@ -11,10 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	player_speed = player.velocity.x
-	if player_speed < 100 :
-		time = 2
-	else :
-		time = 2 - 0.002 * (player_speed - 100)
+	time = 2 - 0.002 * (player_speed - 100)
 	if time < 0.7:
 		time = 0.7
 	wait_time = time
