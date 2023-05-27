@@ -15,6 +15,7 @@ Flappybird clone for Vodka flappybird competition
 3. Ending when score is 100
 4. Infinite mode: without ending
 5. Day and night conversion
+6. SFX
 6. Bunch of unordered spaghetti code
 
 
