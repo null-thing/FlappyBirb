@@ -92,6 +92,7 @@ func cloud_spawn():
 	
 
 func game_over():
+	$player/die.play()
 	$obstacle_timer.stop()
 	$cloud_timer.stop()
 	$HUD.show_game_over()	
@@ -146,6 +147,7 @@ func score_increase():
 		
 
 func _on_player_end():
+	$player/die.play()
 	$obstacle_timer.stop()
 	$cloud_timer.stop()
 	$HUD.show_game_over()

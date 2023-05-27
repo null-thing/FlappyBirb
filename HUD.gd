@@ -50,6 +50,7 @@ func show_game_over():
 	$return_menu_button.show()
 
 func _on_start_button_pressed():
+	$button_sound.play()
 	$Start_button.hide()
 	$Start_inf_button.hide()
 	$Message.hide()
@@ -63,6 +64,7 @@ func _on_start_inf_button_toggled(button_pressed):
 
 
 func _on_return_menu_button_pressed():
+	$button_sound.play()
 	show_message("Left Click to flap \n\nRight Click to glide")
 	$return_menu_button.hide()
 	$Start_button.text("START")

@@ -46,13 +46,17 @@ func _physics_process(delta):
 	# Flap
 	if Input.is_action_pressed("flap"):
 		$AnimatedSprite2D.play("flap")
+		
 		if Input.is_action_just_pressed("flap"):
+			$flap.play()
 			velocity.x+=20
 			velocity.y = JUMP_VELOCITY
 			if rotation>0:
 				rotate_zeroupper = rotation
 			rotate(-45 * delta -  rotate_zeroupper )
 	elif Input.is_action_pressed("glide"):
+		if Input.is_action_just_pressed("glide"):
+			$glide.play()
 		velocity.x-=delta*100
 		$AnimatedSprite2D.play("player_glide")
 		if velocity.x < SPEED:

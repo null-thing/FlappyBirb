@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bem5u5cjqy35u"]
+[gd_scene load_steps=11 format=3 uid="uid://bem5u5cjqy35u"]
 
 [ext_resource type="Texture2D" uid="uid://cq5isapo0roby" path="res://sprite/player/1.png" id="1_6q7dh"]
 [ext_resource type="Script" path="res://player.gd" id="1_vvof0"]
 [ext_resource type="Texture2D" uid="uid://dqn606rmok4if" path="res://sprite/player/die.png" id="2_h3jq5"]
 [ext_resource type="Texture2D" uid="uid://cu3kkcvljcnaj" path="res://sprite/player/2.png" id="2_xk4ak"]
 [ext_resource type="Texture2D" uid="uid://b1cgc2nmcw7q2" path="res://sprite/player/3.png" id="3_t55w4"]
+[ext_resource type="AudioStream" uid="uid://buuij8ff2wqwc" path="res://sound/flap.wav" id="6_s6u6n"]
+[ext_resource type="AudioStream" uid="uid://cbpf56gso6t7w" path="res://sound/glide.wav" id="7_e80ef"]
+[ext_resource type="AudioStream" uid="uid://78mljjfh1huc" path="res://sound/die.wav" id="8_jps7m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fn58y"]
 animations = [{
@@ -61,3 +64,12 @@ position = Vector2(5, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_328g3")
+
+[node name="flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_s6u6n")
+
+[node name="glide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_e80ef")
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jps7m")
